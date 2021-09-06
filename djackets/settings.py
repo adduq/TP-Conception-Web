@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-od%^vhi&8l4=1!#*!ev48ac5k!(%=7(l))jqhij8n$(lyr9+b1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'communoservice.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'communoservice.herokuapp.com']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
+    "http://127.0.0.1:8080",
     "https://communoservice.herokuapp.com",
 ]
 
