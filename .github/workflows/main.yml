@@ -25,7 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: gonuit/heroku-docker-deploy@v1.3.3
-       with:
+      with:
           # Below you must provide variables for your Heroku app.
 
           # The email address associated with your Heroku account.
