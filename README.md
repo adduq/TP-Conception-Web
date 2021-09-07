@@ -1,23 +1,19 @@
-# djackets_vue
+test
+====
 
-## Project setup
+test
 
-```node.js
-npm install
-```
+<a href="https://github.com/vchaptsev/cookiecutter-django-vue">
+    <img src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django%20Vue-blue.svg" />
+</a>
 
-### Compiles and hot-reloads for development
 
-```node.js
-npm run serve
-```
+## Development
 
-### Compiles and minifies for production
+Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/). Start your virtual machines with the following shell command:
 
-```node.js
-npm run build
-```
+`docker-compose up --build`
 
-### Customize configuration
+If all works well, you should be able to create an admin account with:
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+`docker-compose run backend python manage.py createsuperuser`
