@@ -37,6 +37,7 @@ jobs:
 
           # Heroku API key associated with provided user's email.
           # Api Key is available under your Heroku account settings.
+          # TODO: Retirer
           heroku_api_key: f345886d-e24f-4d08-9f62-d80faea1ec7b
 
           # Name of the heroku application to which the build is to be sent.
