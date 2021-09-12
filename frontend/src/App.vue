@@ -62,7 +62,7 @@
 
               <template v-else>
                 <router-link to="/connexion" class="button is-light">
-                  Connexion
+                  Connexion USER
                 </router-link>
               </template>
 

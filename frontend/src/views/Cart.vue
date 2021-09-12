@@ -64,6 +64,7 @@ export default {
 	},
 	mounted() {
 		this.cart = this.$store.state.cart;
+		document.title = "Panier | Djackets";
 	},
 	methods: {
 		removeFromCart(item) {

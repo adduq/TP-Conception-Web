@@ -1,7 +1,7 @@
-version: '3.3'
+# version: "3.3"
 
 volumes:
-    test_data: {}
+  test_data: {}
 
 services:
   backend:
@@ -18,7 +18,8 @@ services:
 
   frontend:
     image: node:10-alpine
-    command: npm run serve
+    # command: npm i && npm run serve
+    command: npm run serve-and-install
     volumes:
       - ./.env:/app/.env:ro
       - ./frontend:/app
@@ -31,14 +32,12 @@ services:
       - test_data:/var/lib/postgresql/data
     env_file: .env
 
-
   mailhog:
     image: mailhog/mailhog
     ports:
       - "8025:8025"
     logging:
       driver: none
-
 
   nginx:
     image: nginx:alpine

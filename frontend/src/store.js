@@ -1,14 +1,13 @@
 import { createStore } from "vuex";
 
 export default createStore({
-  strict: true,
   state: {
     cart: {
-      items: []
+      items: [],
     },
     isAuthenticated: false,
     token: "",
-    isLoading: false
+    isLoading: false,
   },
   mutations: {
     initializeStore(state) {
@@ -20,7 +19,7 @@ export default createStore({
     },
     addToCart(state, item) {
       const exists = state.cart.items.filter(
-        i => i.product.id === item.product.id
+        (i) => i.product.id === item.product.id
       );
 
       if (exists.length) {
@@ -47,7 +46,8 @@ export default createStore({
       state.cart = { items: [] };
 
       localStorage.setItem("cart", JSON.stringify(state.cart));
-    }
+    },
   },
-  actions: {}
+  actions: {},
+  modules: {},
 });

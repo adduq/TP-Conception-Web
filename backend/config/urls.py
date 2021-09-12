@@ -1,3 +1,6 @@
+"""
+!NOTE: Version généré auto
+"""
 # from django.urls import path
 # from django.contrib import admin
 # from django.contrib.auth import logout
@@ -12,9 +15,11 @@
 #     path('logout/', logout, {'next_page': '/'}, name='logout'),
 
 #     path('api/', include(api.urls)),
-#     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+#     path('api-auth/', include('rest_framework.urls',
+# namespace='rest_framework')),
 
 # ]
+
 
 from django.contrib import admin
 from django.urls import path, include
