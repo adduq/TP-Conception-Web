@@ -3,7 +3,7 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
-          <strong>Djackets</strong>
+          <strong>Communoservice</strong>
         </router-link>
 
         <a
@@ -49,9 +49,6 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/ete" class="navbar-item">Été</router-link>
-          <router-link to="/hiver" class="navbar-item">Hiver</router-link>
-
           <div class="navbar-item">
             <div class="buttons">
               <template v-if="$store.state.isAuthenticated">
@@ -62,16 +59,9 @@
 
               <template v-else>
                 <router-link to="/connexion" class="button is-light">
-                  Connexion USER
+                  Connexion
                 </router-link>
               </template>
-
-              <router-link to="/panier" class="button is-success">
-                <span class="icon"
-                  ><i class="fas fa-shopping-cart" aria-hidden="true"></i
-                ></span>
-                <span>Panier ({{ totalPanier }})</span>
-              </router-link>
             </div>
           </div>
         </div>
@@ -91,8 +81,9 @@
 
     <footer class="footer">
       <p class="has-text-centered">
-        Copyright
+        Copyright 
         <i class="fas fa-copyright" aria-hidden="true"></i>
+        Communoservice 2021
       </p>
     </footer>
   </div>
@@ -104,10 +95,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      afficherMenuMobile: false,
-      cart: {
-        items: []
-      }
+      afficherMenuMobile: false
     };
   },
   beforeCreate() {
@@ -122,18 +110,9 @@ export default {
     }
   },
   mounted() {
-    this.cart = this.$store.state.cart;
   },
   computed: {
-    totalPanier() {
-      let totalLength = 0;
 
-      for (let i = 0; i < this.cart.items.length; i++) {
-        totalLength += this.cart.items[i].quantite;
-      }
-
-      return totalLength;
-    }
   }
 };
 </script>

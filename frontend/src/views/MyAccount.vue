@@ -39,7 +39,7 @@ export default {
 		};
 	},
 	mounted() {
-		document.title = "Mon compte | Djackets";
+		document.title = "Mon compte | Communoservice";
 		//this.getMyOrders();
 	},
 	methods: {

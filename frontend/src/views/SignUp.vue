@@ -60,7 +60,7 @@ export default {
 		};
 	},
 	mounted() {
-		document.title = "Inscription | Djackets";
+		document.title = "Inscription | Communoservice";
 	},
 	methods: {
 		submitForm() {
