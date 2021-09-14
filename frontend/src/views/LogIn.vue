@@ -31,7 +31,7 @@
 
 					<hr />
 
-					Ou <router-link to="/inscription">m'inscrire !</router-link>
+					Ou <router-link to="/inscription">M'inscrire!</router-link>
 				</form>
 			</div>
 		</div>
