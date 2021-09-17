@@ -31,7 +31,7 @@
 
 					<hr />
 
-					Ou <router-link to="/inscription">m'inscrire !</router-link>
+					Ou <router-link to="/inscription">M'inscrire!</router-link>
 				</form>
 			</div>
 		</div>
@@ -50,7 +50,7 @@ export default {
 		};
 	},
 	mounted() {
-		document.title = "Connexion | Djackets";
+		document.title = "Connexion | Communoservice";
 	},
 	methods: {
 		async submitForm() {
@@ -70,7 +70,7 @@ export default {
 
 					axios.defaults.headers.common["Authorization"] = "Token " + token;
 					localStorage.setItem("token", token);
-					const toPath = this.$route.query.to || "/panier";
+					const toPath = this.$route.query.to || "/mon-compte";
 					this.$router.push(toPath);
 				})
 				.catch((error) => {
