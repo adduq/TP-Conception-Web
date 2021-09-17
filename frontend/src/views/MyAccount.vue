@@ -20,6 +20,19 @@
 					v-bind:order="order"
 				/>
 			</div> -->
+			<form action="#" method="post">
+				<i class="fa fa-check-circle" aria-hidden="true"></i>
+
+				<div class="control is-block">
+					<label for="test">TEST</label>
+					<input
+						type="checkbox"
+						name="test"
+						id="test"
+						class="is-checkradio is-success is-circle"
+					/>
+				</div>
+			</form>
 		</div>
 	</div>
 </template>
