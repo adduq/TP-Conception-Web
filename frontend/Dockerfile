@@ -17,8 +17,7 @@ RUN npm run build
 # Stage 2 - nginx & frontend dist
 FROM nginx:alpine
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y nodejs npm
+RUN apk update && apk upgrade && apk add nodejs npm
 
 USER communoservice
 
