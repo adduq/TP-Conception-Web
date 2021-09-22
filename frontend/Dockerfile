@@ -17,9 +17,11 @@ RUN npm run build
 # Stage 2 - nginx & frontend dist
 FROM nginx:alpine
 
-RUN apk update && apk upgrade && apk add nodejs npm
+# RUN apk update && apk upgrade && apk add nodejs npm
 
 USER communoservice
+
+RUN apk update && apk upgrade && apk add nodejs npm
 
 COPY ./dev.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/

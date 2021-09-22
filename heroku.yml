@@ -25,9 +25,9 @@ release:
   command:
     - npm run serve
   image: web
-run:
-  web: bundle exec puma -C config/puma.rb
-  worker: python3 manage.py runserver
+# run:
+#   web: bundle exec puma -C config/puma.rb
+#   worker: python3 manage.py runserver
 # run:
 #   web: bundle exec puma -C config/puma.rb
 #   worker: python manage.py
