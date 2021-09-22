@@ -14,7 +14,7 @@ RUN npm run build
 # Stage 2 - nginx & frontend dist
 FROM nginx:alpine
 
-RUN apk update && apk upgrade && apk add nodejs npm
+# RUN apk update && apk upgrade && apk add nodejs npm
 
 RUN adduser --disabled-password communoservice
 USER communoservice

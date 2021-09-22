@@ -24,7 +24,7 @@ release:
   image: worker
   command:
     # - npm run build --prefix /app
-    - ./docker-entrypoint.sh
+    - cat ./docker-entrypoint.sh
   image: web
 # run:
 #   web: bundle exec puma -C config/puma.rb
