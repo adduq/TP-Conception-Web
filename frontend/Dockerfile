@@ -4,10 +4,10 @@ FROM node:10-alpine as build-deps
 WORKDIR /app/
 
 # COPY frontend/package.json frontend/package-lock.json /app/
-COPY package.json /app/
+COPY package.json package-lock.json /app/
 RUN npm install
 
-COPY . /app/
+COPY public src /app/
 # COPY .env /app/.env
 RUN npm run build
 
@@ -23,5 +23,6 @@ USER communoservice
 
 COPY ./dev.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/
+COPY --from=build-deps /app/ /app/
 
 CMD ["nginx", "-g", "daemon off;"]
