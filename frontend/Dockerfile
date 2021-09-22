@@ -7,11 +7,11 @@ USER communoservice
 WORKDIR /app/
 
 # COPY frontend/package.json frontend/package-lock.json /app/
-COPY frontend/package.json /app/
+COPY ./package.json /app/
 RUN npm install
 
-COPY frontend /app/
-COPY .env /app/.env
+COPY . /app/
+# COPY .env /app/.env
 RUN npm run build
 
 # Stage 2 - nginx & frontend dist
