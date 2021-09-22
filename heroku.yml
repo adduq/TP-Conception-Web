@@ -19,7 +19,7 @@ build:
     web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile
 run:
-  web: npm run serve-and-install
+  web: bundle exec npm run serve
   worker: python3 manage.py runserver
 # run:
 #   web: bundle exec puma -C config/puma.rb
