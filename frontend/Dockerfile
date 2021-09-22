@@ -17,6 +17,9 @@ RUN npm run build
 # Stage 2 - nginx & frontend dist
 FROM nginx:alpine
 
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs npm
+
 USER communoservice
 
 COPY ./dev.conf /etc/nginx/nginx.conf
