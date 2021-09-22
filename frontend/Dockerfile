@@ -21,7 +21,7 @@ USER communoservice
 
 # RUN apk update && apk upgrade && apk add nodejs npm
 
-COPY ./dev.conf /etc/nginx/nginx.conf
+COPY ./prod.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/
 COPY --from=build-deps /app/ /app/
 
