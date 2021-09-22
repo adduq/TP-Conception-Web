@@ -2,7 +2,7 @@
 FROM node:10-alpine as build-deps
 
 RUN adduser --disabled-password communoservice
-USER communoservice
+# USER communoservice
 
 WORKDIR /app/
 
@@ -16,6 +16,8 @@ RUN npm run build
 
 # Stage 2 - nginx & frontend dist
 FROM nginx:alpine
+
+USER communoservice
 
 COPY nginx/prod.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/
