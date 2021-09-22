@@ -54,7 +54,7 @@ services:
       - backend
     volumes:
       - ./backend/media/:/media/
-      - ./backend/staticfiles/:/staticfiles/
-      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
+      # - ./backend/staticfiles/:/staticfiles/
+      - ./frontend/dev.conf:/etc/nginx/nginx.conf:ro
     logging:
       driver: none

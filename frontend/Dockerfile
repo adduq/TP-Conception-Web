@@ -19,7 +19,7 @@ FROM nginx:alpine
 
 USER communoservice
 
-COPY ./prod.conf /etc/nginx/nginx.conf
+COPY ./dev.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/
 
 CMD ["nginx", "-g", "daemon off;"]

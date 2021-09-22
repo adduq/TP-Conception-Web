@@ -16,7 +16,7 @@ setup:
       as: DATABASE
 build:
   docker:
-    web: ./nginx/Dockerfile
+    web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
