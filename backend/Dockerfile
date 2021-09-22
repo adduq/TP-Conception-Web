@@ -1,7 +1,6 @@
 FROM python:3.9
 
-# RUN adduser communoservice
-RUN useradd -ms /bin/bash communoservice
+RUN adduser --disabled-password communoservice
 USER communoservice
 
 # python envs
