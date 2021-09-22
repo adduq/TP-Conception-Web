@@ -14,10 +14,10 @@
 #   addons:
 #     - plan: heroku-postgresql
 #       as: DATABASE
-build:
-  docker:
-    web: ./frontend/Dockerfile
-    worker: ./backend/Dockerfile
+# build:
+#   docker:
+#     web: ./frontend/Dockerfile
+#     worker: ./backend/Dockerfile
 # release:
 #   command:
 #     - ./start.sh
