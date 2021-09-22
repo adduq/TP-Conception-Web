@@ -39,7 +39,7 @@ RUN apk update && apk add --no-cache python3 && \
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 COPY --from=build-deps /app/dist /usr/share/nginx/html
 COPY ./prod.conf /etc/nginx/conf.d/default.conf
-COPY ../backend/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 COPY ./backend .
