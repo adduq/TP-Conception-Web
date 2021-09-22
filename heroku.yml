@@ -23,7 +23,7 @@ release:
     - ./start.sh
   image: worker
   command:
-    - npm run serve --prefix /app
+    - npm run build --prefix /app
   image: web
 # run:
 #   web: bundle exec puma -C config/puma.rb
