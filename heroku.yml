@@ -15,12 +15,8 @@ setup:
       as: DATABASE
 build:
   docker:
-    web: ./frontend/Dockerfile
+    web: ./nginx/Dockerfile
     worker: ./backend/Dockerfile
-release:
-  command:
-    - ./start.sh
-  image: worker
 run:
   web: bundle exec puma -C config/puma.rb
-  worker: python ./backend/manage.py runserver
+  worker: python manage.py runserver
