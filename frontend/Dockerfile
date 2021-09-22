@@ -23,6 +23,6 @@ USER communoservice
 
 COPY ./prod.conf /etc/nginx/nginx.conf
 COPY --from=build-deps /app/dist/ /dist/
-COPY --from=build-deps /app/ /app/
+# COPY --from=build-deps /app/ /app/
 
 CMD ["nginx", "-g", "daemon off;"]
