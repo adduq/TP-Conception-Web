@@ -1,6 +1,7 @@
 FROM python:3.9
 
-RUN adduser communoservice
+# RUN adduser communoservice
+RUN useradd -ms /bin/bash communoservice
 USER communoservice
 
 # python envs

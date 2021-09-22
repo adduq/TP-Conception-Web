@@ -9,11 +9,18 @@
 #     web: ./backend/Dockerfile
 # run:
 #   web: bundle exec puma -C config/puma.rb
-
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
 build:
   docker:
     web: ./nginx/Dockerfile
     worker: ./backend/Dockerfile
+release:
+  command:
+    - ./start.sh
+  image: worker
 run:
   web: bundle exec puma -C config/puma.rb
-  worker: python manage.py
+  worker: python ./backend/manage.py runserver
