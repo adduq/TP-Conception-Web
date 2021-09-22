@@ -7,7 +7,7 @@ FROM node:10-alpine as build-deps
 WORKDIR /app/
 
 # COPY frontend/package.json frontend/package-lock.json /app/
-COPY ./package.json /app/
+COPY package.json /app/
 RUN npm install
 
 COPY . /app/
