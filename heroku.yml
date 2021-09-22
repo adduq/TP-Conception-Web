@@ -18,6 +18,13 @@ build:
   docker:
     web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile
+release:
+  command:
+    - ./start.sh
+  image: worker
+  command:
+    - npm run serve
+  image: web
 run:
   web: bundle exec puma -C config/puma.rb
   worker: python3 manage.py runserver
