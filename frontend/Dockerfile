@@ -4,10 +4,10 @@ FROM node:10-alpine as build-deps
 WORKDIR /app/
 
 # COPY frontend/package.json frontend/package-lock.json /app/
-COPY package.json package-lock.json /app/
+COPY package.json /app/
 RUN npm install
 
-COPY public src /app/
+COPY * /app/
 # COPY .env /app/.env
 RUN npm run build
 
