@@ -41,13 +41,11 @@ RUN npm run build
 
 WORKDIR /app
 
-# CMD npm --prefix ./frontend/ run serve && \
-#   gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon
 
 # EXPOSE $PORT
 
-RUN ["chmod", "+x", "/app/entrypoint.sh"]
-ENTRYPOINT ["/app/entrypoint.sh"]
+# RUN ["chmod", "+x", "/app/entrypoint.sh"]
+# ENTRYPOINT ["/app/entrypoint.sh"]
 
 CMD npm --prefix ./frontend/ run serve -- --port $PORT
 
@@ -55,7 +53,9 @@ CMD npm --prefix ./frontend/ run serve -- --port $PORT
 # ! NOTE: WORKSSSSSSSSSSSS
 # CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon && \
 #         npm run serve
-
+# ? Un peu aussi
+# CMD npm --prefix ./frontend/ run serve && \
+#   gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon
 
 # !Note: TEST !
 # python
