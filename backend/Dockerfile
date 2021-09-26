@@ -52,7 +52,11 @@ COPY ./scripts/ /app/
 ENV PORT 8080
 EXPOSE 8080
 
+RUN adduser communoservice
+USER communoservice
+
 # Be sure to use 0.0.0.0 for the host within the Docker container,
 # otherwise the browser won't be able to find it
-RUN ["chmod", "+x", "/app/entrypoint.sh"]
-ENTRYPOINT [ "/app/entrypoint.sh" ]
+# RUN ["chmod", "+x", "/app/entrypoint.sh"]
+# ENTRYPOINT [ "/app/entrypoint.sh" ]
+CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT

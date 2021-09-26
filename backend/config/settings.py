@@ -16,6 +16,9 @@ import os
 from pathlib import Path
 
 
+import dj_database_url
+
+
 # import environ
 # # Initialise environment variables
 # env = environ.Env()
@@ -108,19 +111,30 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'POSTGRES_DB',
+#         'USER': 'POSTGRES_USER',
+#         'PASSWORD': 'POSTGRES_PASSWORD',
+#         # 'NAME': env('POSTGRES_DB'),
+#         # 'USER': env('POSTGRES_USER'),
+#         # 'PASSWORD': env('POSTGRES_PASSWORD'),
+#         'HOST': 'postgres',
+#         'PORT': 5432,
+#     },
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'POSTGRES_DB',
-        'USER': 'POSTGRES_USER',
-        'PASSWORD': 'POSTGRES_PASSWORD',
-        # 'NAME': env('POSTGRES_DB'),
-        # 'USER': env('POSTGRES_USER'),
-        # 'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': 'postgres',
-        'PORT': 5432,
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+db_from_env = dj_database_url.config(
+    default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+DATABASES['default'].update(db_from_env)
 
 # PASSWORD VALIDATION
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
