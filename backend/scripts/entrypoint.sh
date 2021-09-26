@@ -36,7 +36,5 @@
 # # python3 backend/manage.py runserver 0.0.0.0:$PORT
 # gunicorn backend/manage.py -w 4 -b 0.0.0.0:$PORT --daemon --chdir=/app --log-file -
 
-pip3 install --upgrade pip -r requirements.txt
-
 ./backend & 
 sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'
