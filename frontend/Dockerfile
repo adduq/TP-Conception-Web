@@ -11,6 +11,6 @@ RUN npm install
 # Add rest of the client code
 COPY . /app/
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD npm run serve
