@@ -16,11 +16,11 @@ import os
 from pathlib import Path
 
 
-import environ
-# Initialise environment variables
-env = environ.Env()
+# import environ
+# # Initialise environment variables
+# env = environ.Env()
 
-environ.Env.read_env()
+# environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 # DEBUG = env('DEBUG')
 DEBUG = False
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'oAkg0g8h:n:03+G.F04wPb<G@F+j:p..GzPcHGcDmifG'
 
 # DOMAINS
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'communoservice.herokuapp.com']
