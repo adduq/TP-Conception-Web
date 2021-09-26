@@ -25,7 +25,7 @@ COPY . /app/
 COPY ./backend/scripts/ /app/
 # Build static files
 # RUN $HOME/.npm/bin/npm build
-RUN npm build
+RUN npm run build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
