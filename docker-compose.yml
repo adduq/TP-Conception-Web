@@ -39,19 +39,6 @@ services:
     # volumes:
     #   - test_data:/var/lib/postgresql/data
     env_file: .env
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - "8000:80"
-    depends_on:
-      - backend
-      - frontend
-    volumes:
-      - ./backend/media/:/media/
-      - ./backend/staticfiles/:/staticfiles/
-      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
-    logging:
-      driver: none
 
   # pgadmin:
   #   container_name: pgadmin4_container
