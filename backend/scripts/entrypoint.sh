@@ -30,7 +30,7 @@
 # >&2 echo "Postgres is up - continuing..."
 # exec $cmd
 
-python manage.py makemigrations --no-input
-python manage.py migrate --no-input
+python3 manage.py makemigrations --no-input
+python3 manage.py migrate --no-input
 
-python manage.py runserver 0.0.0.0:$PORT
+python3 manage.py runserver 0.0.0.0:$PORT
