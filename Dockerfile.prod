@@ -16,14 +16,15 @@ RUN pip3 install --upgrade pip -r requirements.txt
 # Install JS dependencies
 WORKDIR /app/frontend
 
-COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
+# COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
+COPY ./frontend/package.json /app/frontend/
 RUN npm install
 
 # Add the rest of the code
 COPY . /app/
-COPY ./backend/scripts/ /app/
+# COPY ./backend/scripts/ /app/
 # Build static files
-RUN npm run build
+# RUN npm run build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware

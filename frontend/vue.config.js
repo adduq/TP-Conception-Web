@@ -7,7 +7,7 @@ module.exports = {
 		disableHostCheck: true,
 		historyApiFallback: true,
 		// public: '0.0.0.0:8000',
-		proxy: "https://communoservice.herokuapp.com/",
+		// proxy: "https://communoservice.herokuapp.com/",
 		port: 8000,
 		headers: {
 			"Access-Control-Allow-Origin": "*",
