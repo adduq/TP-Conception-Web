@@ -130,10 +130,10 @@ COPY ./nginx/nginx.conf /etc/nginx/conf.d
 RUN adduser communoservice --disabled-password
 USER communoservice
 
-RUN pip3 install --upgrade pip -r requirements.txt
+# RUN pip3 install --upgrade pip -r requirements.txt
 
-RUN ["chmod", "+x", "/app/entrypoint.sh"]
-ENTRYPOINT ["/app/entrypoint.sh"]
+RUN ["chmod", "+x", "./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 # CMD gunicorn -b 0.0.0.0:8080 config.wsgi:application --daemon && \
 #       sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && \
