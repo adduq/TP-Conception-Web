@@ -46,7 +46,7 @@ EXPOSE $PORT
 CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT &
 RUN npm run serve &
 
-# ! NOTE: WORKSSSSSSSSSSSSSS
+# ! NOTE: WORKSSSSSSSSSSSS
 # CMD gunicorn config.wsgi:application --bind 0.0.0.0:8000 --daemon && \
 #         npm run serve
 
