@@ -1,5 +1,5 @@
 # FROM python:3.7 as app
-FROM python3.8
+FROM python:3.9
 
 # Install curl, node, & yarn
 RUN apt-get install -y curl \
