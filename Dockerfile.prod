@@ -44,7 +44,7 @@ RUN npm run build
 # RUN ["chmod", "+x", "/app/entrypoint.sh"]
 # ENTRYPOINT ["/app/entrypoint.sh"]
 
-CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon
+CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
 
 # ! NOTE: WORKSSSSSSSSSSSS
 # CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon && \
