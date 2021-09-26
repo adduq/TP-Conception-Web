@@ -72,7 +72,7 @@ FROM python:3.9 as app
 WORKDIR /app
 
 # Install Python dependencies
-COPY ./backend/requirements.txt /app/backend/
+COPY ./backend/requirements.txt /app
 RUN pip3 install --upgrade pip -r requirements.txt
 
 # Add the rest of the code
