@@ -49,8 +49,8 @@ COPY . /app/backend
 COPY ./scripts/ /app/
 
 # Make port 8000 available for the app
-ENV PORT 8000
-EXPOSE 8000
+ENV PORT 8080
+EXPOSE 8080
 
 RUN adduser communoservice
 USER communoservice
