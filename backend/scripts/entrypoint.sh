@@ -33,4 +33,5 @@
 python3 backend/manage.py makemigrations --no-input
 python3 backend/manage.py migrate --no-input
 
-python3 backend/manage.py runserver 0.0.0.0:$PORT
+# python3 backend/manage.py runserver 0.0.0.0:$PORT
+gunicorn backend/manage.py -w 4 -b 0.0.0.0:$PORT --daemon --chdir=/app --log-file -

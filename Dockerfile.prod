@@ -20,7 +20,7 @@ COPY ./frontend/package.json /app/frontend/
 RUN npm install
 
 # Serveur
-RUN npm install -g http-server
+# RUN npm install -g http-server
 
 # Add the rest of the code
 COPY . /app/
@@ -43,11 +43,11 @@ WORKDIR /app
 
 EXPOSE $PORT
 
-# RUN ["chmod", "+x", "/app/entrypoint.sh"]
-# ENTRYPOINT ["/app/entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
-CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --daemon && \
-        http-server dist -p $PORT --cors
+# CMD gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --daemon && \
+#         http-server dist -p $PORT --cors
 
 
 # ! NOTE: WORKSSSSSSSSSSSS
