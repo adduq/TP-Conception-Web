@@ -17,13 +17,15 @@ WORKDIR /app/frontend
 
 # COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
-RUN $HOME/.npm/bin/npm install
+# RUN $HOME/.npm/bin/npm install
+RUN npm install
 
 # Add the rest of the code
 COPY . /app/
 COPY ./backend/scripts/ /app/
 # Build static files
-RUN $HOME/.npm/bin/npm build
+# RUN $HOME/.npm/bin/npm build
+RUN npm build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
