@@ -130,6 +130,8 @@ COPY ./nginx/nginx.conf /etc/nginx/conf.d
 RUN adduser communoservice --disabled-password
 USER communoservice
 
+RUN pip3 install --upgrade pip -r requirements.txt
+
 RUN ["chmod", "+x", "/app/entrypoint.sh"]
 ENTRYPOINT ["/app/entrypoint.sh"]
 
