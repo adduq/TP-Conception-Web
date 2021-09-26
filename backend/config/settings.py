@@ -32,7 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env('DEBUG')
+# DEBUG = env('DEBUG')
+DEBUG = False
 SECRET_KEY = env('SECRET_KEY')
 
 # DOMAINS
@@ -42,8 +43,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'communoservice.herokuapp.com']
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_PORT = env('EMAIL_PORT', default='1025')
-EMAIL_HOST = env('EMAIL_HOST', default='mailhog')
+# EMAIL_PORT = env('EMAIL_PORT', default='1025')
+# EMAIL_HOST = env('EMAIL_HOST', default='mailhog')
 
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -110,9 +111,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'NAME': 'POSTGRES_DB',
+        'USER': 'POSTGRES_USER',
+        'PASSWORD': 'POSTGRES_PASSWORD',
+        # 'NAME': env('POSTGRES_DB'),
+        # 'USER': env('POSTGRES_USER'),
+        # 'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': 'postgres',
         'PORT': 5432,
     },
