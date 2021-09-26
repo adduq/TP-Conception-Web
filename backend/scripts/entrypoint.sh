@@ -32,10 +32,10 @@
 
 python3 backend/manage.py makemigrations --no-input
 python3 backend/manage.py migrate --no-input
-python manage.py collectstatic --no-input
+python3 backend/manage.py collectstatic --no-input
 
-python3 backend/manage.py runserver 0.0.0.0:$PORT
-# gunicorn backend/manage.py -w 4 -b 0.0.0.0:$PORT --daemon --chdir=/app --log-file -
+# python3 backend/manage.py runserver 0.0.0.0:$PORT
+gunicorn config.wsgi -w 4 --worker-class gevent -b 0.0.0.0:$PORT --chdir=/app
 
 # ./backend & 
 # sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'
