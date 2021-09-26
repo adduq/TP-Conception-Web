@@ -24,7 +24,7 @@ RUN npm install
 COPY . /app/
 # COPY ./backend/scripts/ /app/
 # Build static files
-# RUN npm run build
+RUN npm run build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
@@ -44,9 +44,11 @@ COPY . /app/
 # RUN ["chmod", "+x", "/app/entrypoint.sh"]
 # ENTRYPOINT ["/app/entrypoint.sh"]
 
+CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon
+
 # ! NOTE: WORKSSSSSSSSSSSS
-CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon && \
-        npm run serve
+# CMD gunicorn config.wsgi:application --bind 0.0.0.0:8080 --daemon && \
+#         npm run serve
 
 
 # !Note: TEST !

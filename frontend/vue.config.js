@@ -6,9 +6,9 @@ module.exports = {
 		hotOnly: true,
 		disableHostCheck: true,
 		historyApiFallback: true,
-		// public: '0.0.0.0:8000',
+		public: "0.0.0.0:8000",
 		// proxy: "https://communoservice.herokuapp.com/",
-		port: 8000,
+		// port: 8000,
 		headers: {
 			"Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
