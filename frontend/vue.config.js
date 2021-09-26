@@ -1,17 +1,13 @@
 // vue.config.js
 module.exports = {
 	lintOnSave: false,
-	entry: [
-		"webpack-dev-server/client?http://0.0.0.0:8000",
-		"webpack/hot/only-dev-server",
-		"./src",
-	],
 	devServer: {
 		hot: true,
 		hotOnly: true,
 		disableHostCheck: true,
 		historyApiFallback: true,
 		// public: '0.0.0.0:8000',
+		proxy: "https://communoservice.herokuapp.com/",
 		port: 8000,
 		headers: {
 			"Access-Control-Allow-Origin": "*",
