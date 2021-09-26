@@ -102,6 +102,9 @@ WORKDIR /app
 # # RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 # # RUN apk add postgresql-dev gcc python3-dev musl-dev
 
+RUN apk add python3 && apk add pip3
+RUN pip3 install gunicorn
+
 COPY --from=build-vue /app/dist /usr/share/nginx/html
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 # COPY ./backend/requirements.txt .
