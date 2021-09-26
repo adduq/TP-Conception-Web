@@ -2,5 +2,4 @@ build:
   docker:
     web: Dockerfile.prod
 run:
-  # web: python3 ./backend/manage.py runserver 0.0.0.0:$PORT
-  web: ls -al
+  web: python3 manage.py runserver 0.0.0.0:$PORT
