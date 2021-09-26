@@ -1,7 +1,7 @@
 # Stage 1 - build frontend app
 FROM node:10-alpine as build-deps
 
-RUN adduser --disabled-password communoservice
+RUN adduser communoservice
 USER communoservice
 
 WORKDIR /app/

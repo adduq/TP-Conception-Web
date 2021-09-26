@@ -1,4 +1,4 @@
-version: "3.3"
+# version: "3.3"
 
 volumes:
   test_data: {}
@@ -54,7 +54,7 @@ services:
       - backend
     volumes:
       - ./backend/media/:/media/
-      # - ./backend/staticfiles/:/staticfiles/
-      - ./frontend/dev.conf:/etc/nginx/nginx.conf:ro
+      - ./backend/staticfiles/:/staticfiles/
+      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
     logging:
       driver: none
