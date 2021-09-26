@@ -11,10 +11,10 @@ services:
     # command: /tmp/start.sh
     # entrypoint: /tmp/entrypoint.sh
     # restart: on-failure
-    ports:
-      - "8000:8000"
-    stdin_open: true
-    tty: true
+    # ports:
+    #   - "8080:8080"
+    # stdin_open: true
+    # tty: true
     depends_on:
       - postgres
     env_file: .env
@@ -27,8 +27,8 @@ services:
       # - ./.env:/app/.env:ro
       - ./frontend:/app
       - /app/node_modules
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8000:8000"
     # working_dir: /app
     # restart: on-failure
     depends_on:
@@ -39,6 +39,19 @@ services:
     # volumes:
     #   - test_data:/var/lib/postgresql/data
     env_file: .env
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./backend/media/:/media/
+      - ./backend/staticfiles/:/staticfiles/
+      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
+    logging:
+      driver: none
 
   # pgadmin:
   #   container_name: pgadmin4_container
