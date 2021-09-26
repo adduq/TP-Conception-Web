@@ -1,5 +1,7 @@
 # FROM python:3.7 as app
-FROM tiangolo/uwsgi-nginx:python3.8
+FROM nginx
+
+RUN apt-get install -y python3.9 python3-pip
 
 # Install curl, node, & yarn
 RUN apt-get install -y curl \
@@ -34,7 +36,6 @@ RUN npm run build
 # Collect static files
 # RUN ["mkdir", "/app/backend/staticfiles"]
 
-RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /app
