@@ -1,48 +1,26 @@
-"""
-Django settings for Test project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/dev/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/dev/ref/settings/
-"""
-
-# import environ
 import os
-
-# from datetime import timedelta
 
 from pathlib import Path
 
-
 import dj_database_url
 
-
-# import environ
-# # Initialise environment variables
-# env = environ.Env()
-
-# environ.Env.read_env()
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# ROOT_DIR = environ.Path(__file__) - 2
-
 
 # DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-# DEBUG = env('DEBUG')
-DEBUG = False
-SECRET_KEY = 'oAkg0g8h:n:03+G.F04wPb<G@F+j:p..GzPcHGcDmifG'
 
-# DOMAINS
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'communoservice.herokuapp.com']
-# ALLOWED_HOSTS = env('ALLOWED_HOSTS', default=['*'])
-# DOMAIN = env('DOMAIN')
+DEBUG = os.environ.get('DEBUG')
+# DEBUG = False
+# SECRET_KEY = 'oAkg0g8h:n:03+G.F04wPb<G@F+j:p..GzPcHGcDmifG'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(",")
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+#     'api-communoservice.herokuapp.com'
+# ]
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -61,23 +39,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'djoser'
+    'djoser',
+    'apps.offer'
 ]
 
-# CORS_ORIGIN_ALLOW_ALL = False
-
-# CORS_ORIGIN_WHITELIST = (
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(",")
+# CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:8000",
 #     "http://127.0.0.1:8000",
 #     "https://communoservice.herokuapp.com",
-# )
-
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "https://communoservice.herokuapp.com",
-]
+# ]
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -120,25 +91,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'POSTGRES_DB',
-#         'USER': 'POSTGRES_USER',
-#         'PASSWORD': 'POSTGRES_PASSWORD',
-#         # 'NAME': env('POSTGRES_DB'),
-#         # 'USER': env('POSTGRES_USER'),
-#         # 'PASSWORD': env('POSTGRES_PASSWORD'),
-#         'HOST': 'postgres',
-#         'PORT': 5432,
-#     },
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'postgres',
+        'PORT': 5432,
+    },
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 db_from_env = dj_database_url.config(
@@ -162,6 +131,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -206,10 +181,20 @@ USE_TZ = True
 # MEDIA_URL = '/media/'
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_URL = '/app/static/'
+# STATIC_URL = '/app/static/'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/app/static/'
+# STATIC_ROOT = BASE_DIR / 'static/'
 
-MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static/',
+]
+
+MEDIA_URL = '/app/media/'
+# MEDIA_URL = '/app/media/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/app/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

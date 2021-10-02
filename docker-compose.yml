@@ -1,68 +1,60 @@
-version: "3.3"
+# version: "3.3"
 
-# volumes:
-#   test_data: {}
+volumes:
+  test_data: {}
 
 services:
   backend:
-    build: ./backend
-    volumes:
-      - ./backend:/app
-    # command: /tmp/start.sh
-    # entrypoint: /tmp/entrypoint.sh
-    # restart: on-failure
-    # ports:
-    #   - "8080:8080"
-    # stdin_open: true
-    # tty: true
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     depends_on:
       - postgres
+    volumes:
+      - ./backend:/app
+    command: /tmp/start.sh
+    entrypoint: /tmp/entrypoint.dev.sh
+    restart: on-failure
     env_file: .env
+
   frontend:
-    build: ./frontend
-    # image: node:10-alpine
-    # command: npm i && npm run serve
+    image: node:10-alpine
     command: npm run serve-and-install
     volumes:
-      # - ./.env:/app/.env:ro
+      - ./.env:/app/.env:ro
       - ./frontend:/app
-      - /app/node_modules
-    # ports:
-    #   - "8000:8000"
-    # working_dir: /app
-    # restart: on-failure
-    depends_on:
-      - backend
+    working_dir: /app
+    restart: on-failure
+
   postgres:
-    image: postgres:11.1-alpine
-    # image: postgres:10-alpine
-    # volumes:
-    #   - test_data:/var/lib/postgresql/data
+    image: postgres:10-alpine
+    volumes:
+      - test_data:/var/lib/postgresql/data
     env_file: .env
 
-  # pgadmin:
-  #   container_name: pgadmin4_container
-  #   image: dpage/pgadmin4
-  #   env_file: .env
-  #   ports:
-  #     - "8050:80"
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    env_file: .env
+    ports:
+      - "8050:80"
 
-  # mailhog:
-  #   image: mailhog/mailhog
-  #   ports:
-  #     - "8025:8025"
-  #   logging:
-  #     driver: none
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+    logging:
+      driver: none
 
-  # nginx:
-  #   image: nginx:alpine
-  #   ports:
-  #     - "8000:80"
-  #   depends_on:
-  #     - backend
-  #   volumes:
-  #     - ./backend/media/:/media/
-  #     - ./backend/staticfiles/:/staticfiles/
-  #     - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
-  #   logging:
-  #     driver: none
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./backend/media/:/media/
+      - ./backend/staticfiles/:/staticfiles/
+      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
+    logging:
+      driver: none

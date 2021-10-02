@@ -1,4 +1,3 @@
-# Use an official node runtime as a parent image
 FROM node:12
 
 WORKDIR /app/
@@ -7,10 +6,13 @@ WORKDIR /app/
 COPY package.json package-lock.json /app/
 
 RUN npm install
+RUN npm install -g serve
 
 # Add rest of the client code
 COPY . /app/
 
-EXPOSE 8000
+EXPOSE $PORT
 
-CMD npm run serve
+RUN npm run build
+
+CMD serve -s /app/dist -l $PORT
