@@ -141,6 +141,8 @@
 					Communoservice 2021
 				</p>
 			</div>
+
+			<div>{{ url }}</div>
 		</footer>
 	</div>
 </template>
