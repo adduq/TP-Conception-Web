@@ -16,7 +16,6 @@
         "bulma-toast": "^2.4.1",
         "bulmaswatch": "^0.8.1",
         "core-js": "^3.6.5",
-        "dotenv": "^10.0.0",
         "vue": "^3.0.0",
         "vue-router": "^4.0.0-0",
         "vuex": "^4.0.0-0"
@@ -27,6 +26,7 @@
         "@vue/cli-plugin-vuex": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
         "@vue/compiler-sfc": "^3.0.0",
+        "dotenv-webpack": "^7.0.3",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2"
     }

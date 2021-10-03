@@ -13,6 +13,6 @@ COPY . /app/
 
 EXPOSE $PORT
 
-RUN npm run build -- --mode production
+RUN npm run build
 
 CMD serve -s /app/dist -l $PORT
