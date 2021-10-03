@@ -2,15 +2,24 @@ import os
 
 from pathlib import Path
 
-import dj_database_url
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# DEBUG
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 
 DEBUG = os.environ.get('DEBUG')
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(",")
+
+
+# EMAIL CONFIGURATION
+# ------------------------------------------------------------------------------
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = [
@@ -72,15 +81,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'postgres',
+        'PORT': 5432,
+    },
 }
-
-DATABASE_URL = os.environ.get('DATABASE_URL')
-db_from_env = dj_database_url.config(
-    default=DATABASE_URL, conn_max_age=500, ssl_require=True)
-DATABASES['default'].update(db_from_env)
 
 # PASSWORD VALIDATION
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -112,23 +120,55 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'fr-ca'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# STATIC_ROOT = str(ROOT_DIR('staticfiles'))
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-STATIC_URL = '/app/static/'
-STATIC_ROOT = BASE_DIR / 'static/'
+# STATIC_URL = '/staticfiles/'
+
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+# STATICFILES_DIRS = [
+#     str(ROOT_DIR('static')),
+# ]
+
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# ]
 
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+# MEDIA_ROOT = str(ROOT_DIR('media'))
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+# MEDIA_URL = '/media/'
+
+
+STATIC_URL = '/app/static/'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/app/static/'
+STATIC_ROOT = BASE_DIR / 'static/'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static/',
+# ]
+
 MEDIA_URL = '/app/media/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/app/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
