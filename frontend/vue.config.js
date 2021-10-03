@@ -1,8 +1,4 @@
 // vue.config.js
-
-// var merge = require("webpack-merge");
-const Dotenv = require("dotenv-webpack");
-
 module.exports = {
 	lintOnSave: false,
 	devServer: {
@@ -22,15 +18,4 @@ module.exports = {
 			ignored: "/app/node_modules/",
 		},
 	},
-	configureWebpack: {
-		plugins: [
-			new Dotenv({
-				path: "./.env",
-				systemvars: true,
-			}),
-		],
-	},
-	// configureWebpack: (config) => {
-	// 	merge(config, { VUE_APP_AXIOS_URL: process.env.VUE_APP_AXIOS_URL });
-	// },
 };

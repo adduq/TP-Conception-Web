@@ -158,6 +158,7 @@ export default {
 			},
 			dropdownRight: true,
 			modalSettingsisActive: false,
+			url: process.env.VUE_APP_AXIOS_URL,
 		};
 	},
 	beforeCreate() {
