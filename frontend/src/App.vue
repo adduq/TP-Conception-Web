@@ -141,8 +141,6 @@
 					Communoservice 2021
 				</p>
 			</div>
-
-			<div>{{ url }}</div>
 		</footer>
 	</div>
 </template>
@@ -160,7 +158,6 @@ export default {
 			},
 			dropdownRight: true,
 			modalSettingsisActive: false,
-			url: process.env.VUE_APP_AXIOS_URL,
 		};
 	},
 	beforeCreate() {
