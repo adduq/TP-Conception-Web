@@ -163,10 +163,6 @@ export default {
 	beforeCreate() {
 		this.$store.commit("initializeStore");
 
-		// ! Note: À Supp
-		console.log(VUE_APP_AXIOS_URL);
-		// ! Note: À Supp
-
 		const token = this.$store.state.token;
 
 		if (token) {
