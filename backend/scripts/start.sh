@@ -10,4 +10,3 @@ python3 manage.py migrate --no-input
 python3 manage.py loaddata apps/fixtures.json
 
 python manage.py runserver 0.0.0.0:8000
-# python manage.py runserver 0.0.0.0:8000 --settings=config.settings-dev
