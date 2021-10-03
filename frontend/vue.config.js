@@ -1,7 +1,4 @@
 // vue.config.js
-
-const webpack = require("webpack");
-
 module.exports = {
 	lintOnSave: false,
 	devServer: {
@@ -20,14 +17,5 @@ module.exports = {
 			poll: 1000,
 			ignored: "/app/node_modules/",
 		},
-	},
-	configureWebpack: {
-		plugins: [
-			new webpack.DefinePlugin({
-				"process.env": {
-					VUE_APP_AXIOS_URL: JSON.stringify(process.env.VUE_APP_AXIOS_URL),
-				},
-			}),
-		],
 	},
 };
